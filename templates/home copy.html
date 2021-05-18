@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+<p>temporary page</p>
+
+
+{% if session['UserName'] %}
+
+<h1> User Name: {{ session['UserName'] }}</h1>
+<h1>User Email: {{ session['userEmail'] }}</h1>
+
+{% else %}
+<h1>not logged in</h1>
+
+{% endif %}
+{% endblock %}

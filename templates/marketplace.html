@@ -1,0 +1,202 @@
+{% extends "layout.html"%}
+
+{% block header_extra %}
+<title>Marketplace || Auctov</title>
+
+
+<link href="{{ url_for('static', filename='css/skins/square/grey.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/ion.rangeSlider.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/ion.rangeSlider.skinFlat.css') }}" rel="stylesheet">
+
+
+{% endblock header_extra %}
+
+{% block content %}
+<div class="collapse" id="collapseMap">
+	<div id="map" class="map"></div>
+</div><!-- End Map -->
+
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+
+
+
+	<!-- {% if products %}
+
+
+	{% for item in products %}
+
+	<p>title:{{item[1]}}</p>
+	<p>description:{{item[2]}}</p>
+	<p>reserve price:{{item[3]}}</p>
+	<p>bin price:{{item[4]}}</p>
+	<p>image </p>
+	<img src="/static/uploads/{{item[5]}}" alt="product image" width="100" height="100">
+
+
+	<hr>
+	<hr>
+
+
+	{% endfor %}
+	{% endif %} -->
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="row">
+
+		<div class="col-lg-3">
+			<div id="filters_col">
+				<a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters"
+					id="filters_col_bt">Filters <i class="icon-plus-1 float-right"></i></a>
+				<div class="collapse show" id="collapseFilters">
+					<div class="filter_type">
+						<h6>Type</h6>
+						<ul>
+							<li><label><input type="checkbox" checked class="icheck">All <small>(49)</small></label>
+							</li>
+							<li><label><input type="checkbox" class="icheck">Electronics
+									<small>(12)</small></label><i class="color_1"></i></li>
+							<li><label><input type="checkbox" class="icheck">Vehicles <small>(5)</small></label><i
+									class="color_2"></i></li>
+							<li><label><input type="checkbox" class="icheck">Furniture <small>(7)</small></label><i
+									class="color_3"></i></li>
+							<li><label><input type="checkbox" class="icheck">Computer <small>(1)</small></label><i
+									class="color_4"></i></li>
+							<li><label><input type="checkbox" class="icheck">Mobile <small>(49)</small></label><i
+									class="color_5"></i></li>
+							<li><label><input type="checkbox" class="icheck">Accessories
+									<small>(22)</small></label><i class="color_6"></i></li>
+
+						</ul>
+					</div>
+					<div class="filter_type">
+						<h6>Options</h6>
+						<ul class="nomargin">
+							<li><label><input type="checkbox" class="icheck">Delivery</label></li>
+							<li><label><input type="checkbox" class="icheck">Take Away</label></li>
+							<li><label><input type="checkbox" class="icheck">Distance 10Km</label></li>
+							<li><label><input type="checkbox" class="icheck">Distance 5Km</label></li>
+						</ul>
+					</div>
+				</div>
+				<!--End collapse -->
+			</div>
+			<!--End filters col-->
+		</div>
+		<!--End col-md -->
+
+		<div class="col-lg-9">
+
+			<div id="tools">
+				<div class="row">
+					<div class="col-md-3 col-sm-4 col-5">
+						<div class="styled-select">
+							<select name="sort_rating" id="sort_rating">
+								<option value="" selected>Sort by ranking</option>
+								<option value="lower">Lowest ranking</option>
+								<option value="higher">Highest ranking</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--End tools -->
+			{% if products %}
+
+
+			{% for item in products %}
+
+
+
+
+			<div class="strip_list wow fadeIn" data-wow-delay="0.1s">
+				<div class="row">
+					<div class="col-md-9">
+						<div class="desc">
+							<div class="thumb_strip">
+								<a href="detail_page.html"><img style="height: 100%; width: 100%;"
+										src="/static/uploads/{{item[5]}}" alt=""></a>
+							</div>
+							<h3>{{item[1]}}</h3>
+							<div class="type">
+								{{item[4]}}
+							</div>
+							<div class="location">
+								{{item[2]}}
+							</div>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="go_to">
+							<div>
+								<a href="detail_page.html" class="btn_1">View</a>
+							</div>
+						</div>
+					</div>
+				</div><!-- End row-->
+			</div><!-- End strip_list-->
+
+			{% endfor %}
+			{% endif %}
+
+
+
+			<a href="#0" class="load_more_bt wow fadeIn" data-wow-delay="0.2s">Load more...</a>
+		</div><!-- End col-md-9-->
+
+	</div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
+
+
+<div class="layer"></div><!-- Mobile menu overlay mask -->
+
+
+
+<!-- Search Menu -->
+<div class="search-overlay-menu">
+	<span class="search-overlay-close"><i class="icon_close"></i></span>
+	<form role="search" id="searchform" method="get">
+		<input value="" name="q" type="search" placeholder="Search..." />
+		<button type="submit"><i class="icon-search-6"></i>
+		</button>
+	</form>
+</div>
+<!-- End Search Menu -->
+
+
+<!-- SPECIFIC SCRIPTS -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/infobox.js') }}"></script>
+
+<script src="{{ url_for('static', filename='js/ion.rangeSlider.js') }}"></script>
+<script>
+	$(function () {
+		'use strict';
+		$("#range").ionRangeSlider({
+			hide_min_max: true,
+			keyboard: true,
+			min: 0,
+			max: 15,
+			from: 0,
+			to: 5,
+			type: 'double',
+			step: 1,
+			prefix: "Km ",
+			grid: true
+		});
+	});
+</script>
+{% endblock content %}

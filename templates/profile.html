@@ -1,0 +1,126 @@
+{% extends "layout.html"%}
+
+{% block header_extra %}
+<title>Profile || Auctov</title>
+
+
+<link href="{{ url_for('static', filename='css/skins/square/grey.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/slider-pro.min.css.css') }}" rel="stylesheet">
+
+
+{% endblock header_extra %}
+
+{% block content %}
+
+
+<section class="parallax-window" data-parallax="scroll"
+    data-image-src="{{ url_for('static', filename='images/bg-home.jpg') }}" data-natural-width="1400"
+    data-natural-height="470">
+    <div id="subheader">
+        <div id="sub_content">
+            <div id="thumb"><img src="img/thumb_restaurant.jpg" alt=""></div>
+            <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i><i
+                    class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i> ( <small><a
+                        href="#0">98 reviews</a></small> )</div>
+            <h1>{{ session['UserName'] }}</h1>
+            <div>{{ session['userEmail'] }}</div>
+        </div><!-- End sub_content -->
+    </div><!-- End subheader -->
+</section><!-- End section -->
+<!-- End SubHeader ============================================ -->
+
+
+
+
+<!-- Content ================================================== -->
+<!-- Content ================================================== -->
+<div class="container margin_60_35">
+    <div class="row">
+
+        <div class="col-lg-12">
+
+            <div id="tools">
+                <div class="row">
+                    <div class="col-md-3 col-sm-4 col-5">
+                        <div class="styled-select">
+                            <select name="sort_rating" id="sort_rating">
+                                <option value="" selected>Sort by ranking</option>
+                                <option value="lower">Lowest ranking</option>
+                                <option value="higher">Highest ranking</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-9 col-sm-8 col-7">
+                        <a href="list_page.html" class="bt_filters"><i class="icon-list"></i></a>
+                    </div>
+                </div>
+            </div>
+            <!--End tools -->
+
+            <div class="row">
+
+                {% if products %}
+
+
+                {% for item in products %}
+
+
+
+                <div class="col-md-6 wow zoomIn" data-wow-delay="0.1s">
+                    <a class="strip_list grid" href="detail_page.html">
+                        <div class="desc">
+                            <div class="thumb_strip">
+                                <img src="/static/uploads/{{item[5]}}" style="width: 100%; height: 100%;" alt="">
+                            </div>
+                            <div class="rating">
+                                <i class="icon_star voted"></i><i class="icon_star voted"></i><i
+                                    class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
+                            </div>
+                            <h3>{{item[1]}}</h3>
+
+                            <div class="location">
+                                {{item[2]}}
+                            </div>
+                            <ul>
+                                <li>Reserve Price: {{item[3]}}<i class="icon_check_alt2 ok"></i></li>
+                                <li>Buy It Now: {{item[4]}}<i class="icon_check_alt2 ok"></i></li>
+                            </ul>
+                        </div>
+                    </a><!-- End strip_list-->
+                </div><!-- End col-md-6-->
+
+                {% endfor %}
+                {% endif %}
+            </div><!-- End row-->
+
+            <a href="#0" class="load_more_bt wow fadeIn" data-wow-delay="0.2s">Load more...</a>
+        </div><!-- End col-md-9-->
+
+    </div><!-- End row -->
+</div><!-- End container -->
+
+
+<script src="{{ url_for('static', filename='js/infobox.js') }}"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        $('#Img_carousel').sliderPro({
+            width: 960,
+            height: 500,
+            fade: true,
+            arrows: true,
+            buttons: false,
+            fullScreen: false,
+            smallSize: 500,
+            startSlide: 0,
+            mediumSize: 1000,
+            largeSize: 3000,
+            thumbnailArrows: true,
+            autoplay: false
+        });
+    });
+</script>
+
+
+{% endblock content %}

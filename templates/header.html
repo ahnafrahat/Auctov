@@ -1,0 +1,55 @@
+    <!-- Header ================================================== -->
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-sm-4 col-4">
+                    <a href="{{url_for('index')}}" id="logo">
+                        <img src="{{ url_for('static', filename='images/auctov_icon.png') }}" width="" height="23"
+                            alt="" class="d-none d-sm-block">
+                        <img src="{{ url_for('static', filename='images/auctov_icon.png') }}" width="" height="23"
+                            alt="" class="d-block d-sm-none">
+                    </a>
+                </div>
+                <nav class="col-md-8 col-sm-8 col-8">
+                    <a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="javascript:void(0);"><span>Menu
+                            mobile</span></a>
+                    <div class="main-menu">
+                        <div id="header_menu">
+                            <img src="{{ url_for('static', filename='images/auctov_icon.png') }}" width="190"
+                                height="23" alt="">
+                        </div>
+                        <a href="#" class="open_close" id="close_in"><i class="icon_close"></i></a>
+                        <ul>
+                            <li>
+                                <a href="{{url_for('index')}}">Home</a>
+                            </li>
+                            <li><a href="{{ url_for('product.getAddProduct')}}">Start Selling</a></li>
+
+                            <li><a href="{{url_for('product.getMarketPlace')}}">Marketplace</a></li>
+                            <li><a href="about.html">About us</a></li>
+                            <li><a href="faq.html">Faq</a></li>
+
+
+                            {% if session['UserName'] %}
+                            <li class="submenu"><a
+                                    href="{{ url_for('user.getUserProfile') }}">{{ session['UserName'] }}</a>
+                                <ul>
+                                    <li><a href="{{ url_for('auth.getLogout') }}">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            {% else %}
+                            <li><a href="{{ url_for('auth.getLogin') }}">Login</a>
+                            </li>
+                            <li><a href="{{ url_for('auth.getSignup') }}">Register</a>
+                            </li>
+                            {% endif %}
+
+
+                        </ul>
+                    </div><!-- End main-menu -->
+                </nav>
+            </div><!-- End row -->
+        </div><!-- End container -->
+    </header>
+    <!-- End Header =============================================== -->

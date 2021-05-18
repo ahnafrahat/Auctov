@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    {% block header_extra %}
+
+    {% endblock header_extra %}
+
+    <!-- Favicons-->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/auctov_icon.png') }}">
+
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Lato:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animate.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/elegant_font/elegant_font.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontello/css/fontello.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/magnific-popup.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pop_up.css') }}">
+
+
+
+    <!-- YOUR CUSTOM CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css2/custom.css') }}">
+
+</head>
+
+<body>
+    {%include "preloader.html" %}
+
+    {%include "header.html" %}
+
+
+
+    {% block content %}
+
+
+    {% endblock %}
+
+    {%include "footer.html" %}
+
+    {%include "footer_script.html" %}
+
+
+</body>

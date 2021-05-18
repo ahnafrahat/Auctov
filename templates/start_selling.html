@@ -1,0 +1,170 @@
+{% extends "layout.html"%}
+
+{% block header_extra %}
+<title>Start Selling || Auctov</title>
+
+
+<link href="{{ url_for('static', filename='css/skins/square/grey.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/admin.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='js/editor/summernote-bs4.css') }}" rel="stylesheet">
+<link href="{{ url_for('static', filename='css/dropzone.css') }}" rel="stylesheet">
+{% endblock header_extra %}
+
+{% block content %}
+<!-- Content ================================================== -->
+<div class="container margin_60">
+    <div id="tabs" class="tabs">
+        <nav>
+            <ul>
+                <li><a href="#section-1" class="icon-profile"><span>Main info</span></a>
+                </li>
+            </ul>
+        </nav>
+        <div class="content">
+
+            <section id="section-1">
+                <div class="indent_title_in">
+                    <i class="icon_house_alt"></i>
+                    <h3>General description</h3>
+                    <p>Write details about the product.</p>
+                </div>
+
+                <form action="{{ url_for('product.postAddProduct') }}" method="POST" enctype="multipart/form-data">
+
+                    <div class="wrapper_indent">
+                        <div class="form-group">
+                            <label>Product Title</label>
+                            <input class="form-control" name="product_title" id="product_title" type="text">
+                        </div>
+                        <div class="form-group">
+                            <label>Product description</label>
+                            <textarea class=" form-control" name="product_description" id="product_description"
+                                placeholder="Enter text ..." style="height: 200px;"></textarea>
+                        </div>
+                    </div><!-- End wrapper_indent -->
+
+                    <hr class="styled_2">
+
+                    <div class="indent_title_in">
+                        <i class="icon_pin_alt"></i>
+                        <h3>Pricing</h3>
+                        <p>
+                            Set price.
+                        </p>
+                    </div>
+                    <div class="wrapper_indent">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Reserve Price</label>
+                                    <input type="number" id="reserve_price" name="reserve_price" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label>Buy It Now Price</label>
+                                    <input type="number" id="bin_price" name="bin_price" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <!--End row -->
+                    </div><!-- End wrapper_indent -->
+
+                    <hr class="styled_2">
+                    <div class="indent_title_in">
+                        <i class="icon_images"></i>
+                        <h3>Photo</h3>
+                    </div>
+
+                    <div class="wrapper_indent add_bottom_45">
+                        <div class="form-group">
+                            <label>Upload your Product Photo</label>
+                            <div>
+                                <input type="file" class="form-control" id="ProductImage" name="ProductImage">
+                                <!-- <div class="dz-default dz-message"><span>Click or Drop Images Here</span> -->
+                            </div>
+                        </div>
+                    </div>
+
+        </div><!-- End wrapper_indent -->
+
+        <hr class="styled_2">
+        <div class="wrapper_indent">
+            <button type="submit" class="btn_1">Publish now</button>
+        </div><!-- End wrapper_indent -->
+
+
+
+
+
+        </form>
+
+        </section><!-- End section 1 -->
+
+
+
+
+    </div><!-- End content -->
+</div>
+</div><!-- End container  -->
+<!-- End Content =============================================== -->
+
+
+
+<div class="layer"></div>
+<!-- Mobile menu overlay mask -->
+
+
+
+
+<!-- COMMON SCRIPTS -->
+<script src="{{ url_for('static', filename='js/jquery-3.5.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/common_scripts_min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/functions.js') }}"></script>
+<script src="{{ url_for('static', filename='assets/validate.js') }}"></script>
+
+<!-- Specific scripts -->
+<script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
+<script>
+    new CBPFWTabs(document.getElementById('tabs'));
+</script>
+<!-- WYSIWYG Editor -->
+<script src="{{ url_for('static', filename='js/editor/summernote-bs4.min.js') }}"></script>
+<script>
+    $('.wysihtml5').summernote({
+        fontSizes: ['10', '14'],
+        toolbar: [
+            // [groupName, [list of button]]
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough']],
+            ['fontsize', ['fontsize']],
+            ['para', ['ul', 'ol', 'paragraph']]
+        ],
+        placeholder: 'Write here your description....',
+        tabsize: 2,
+        height: 200
+    });
+</script>
+<script src="{{ url_for('static', filename='js/dropzone.min.js') }}"></script>
+<script>
+    if ($('.dropzone').length > 0) {
+        Dropzone.autoDiscover = false;
+        $("#photos").dropzone({
+            url: "upload",
+            addRemoveLinks: true
+        });
+
+        $("#logo_picture").dropzone({
+            url: "upload",
+            maxFiles: 1,
+            addRemoveLinks: true
+        });
+
+        $(".menu-item-pic").dropzone({
+            url: "upload",
+            maxFiles: 1,
+            addRemoveLinks: true
+        });
+    }
+</script>
+{% endblock content %}
