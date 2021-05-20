@@ -4,13 +4,14 @@ from decorators import is_loggedIn
 from uploadUtils import photos
 from datetime import datetime
 
-from db import add_product, get_all_products, get_user_products
+from db import add_product, get_all_products, get_user_products, get_single_product
 
 product = Blueprint("product", __name__,
                     static_folder="static", template_folder="templates")
 
 
 @product.route("/getAddProduct", methods=["GET"])
+@is_loggedIn
 def getAddProduct():
 
     get_user_products(user_id=1)
@@ -45,3 +46,12 @@ def getMarketPlace():
     products = get_all_products()
 
     return render_template("marketplace.html", products=products)
+
+
+@product.route("/singleProduct/<int:product_id>", methods=["GET"])
+def singleProduct(product_id):
+    productId = product_id
+
+    product = get_single_product(productId)
+
+    return render_template("listing_details.html", product=product)

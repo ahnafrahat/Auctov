@@ -1,0 +1,130 @@
+{% extends "layout.html"%}
+
+{% block header_extra %}
+<title>Listing Details || Auctov</title>
+
+
+{% endblock header_extra %}
+
+
+{% block content %}
+
+<p>{{ product }}</p>
+
+<div class="container margin_60_35">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="box_style_1">
+                <ul id="cat_nav">
+                    <li><a href="#overview" class="active">Overview</a></li>
+                    <li><a href="#description">Description </a></li>
+                    <li><a href="#extra">Extra Info</a></li>
+                </ul>
+            </div><!-- End box_style_1 -->
+            <div class="box_style_2 d-none d-sm-block" id="help">
+                <i class="icon_lifesaver"></i>
+                <h4>Need <span>Help?</span></h4>
+                <a href="tel://004542344599" class="phone">+45 423 445 99</a>
+                <small>Monday to Friday 9.00am - 7.30pm</small>
+            </div>
+        </div><!-- End col -->
+        <div class="col-lg-6">
+            <div class="box_style_2" id="main_menu">
+                <h2 class="inner">Product Details</h2>
+                <img alt="" id="overview" class="" style="height: auto; width: 100%;"
+                    src="/static/uploads/{{product[5]}}">
+                <h6>
+                    {{ product[1] }} </h6>
+                <h3 class="nomargin_top" id="description">Description</h3>
+                <p>
+                    {{ product[2] }}
+                </p>
+
+                <hr>
+                <h3 id="extra">What's Included</h3>
+                <p>
+                    <ul>
+                        <li>{{ product[1] }}</li>
+
+                    </ul>
+                </p>
+
+                <hr>
+
+            </div><!-- End box_style_1 -->
+        </div><!-- End col -->
+        <div class="col-lg-3" id="sidebar">
+            <div class="theiaStickySidebar">
+                <div id="cart_box">
+                    <h3>Your order <i class="icon_cart_alt float-right"></i></h3>
+                    <table class="table table_summary">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    Total Bid <span class="float-right">3</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Reserve Price <span class="float-right">${{product[3]}}</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Latest Bid <span class="float-right">$56</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="total">
+                                    Buy It Now <span class="float-right">${{product[4]}}</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <hr>
+                    <a class="btn_full" href="cart.html">Buy It Now ${{product[4]}}</a>
+                </div><!-- End cart_box -->
+            </div><!-- End theiaStickySidebar -->
+        </div><!-- End col -->
+    </div><!-- End row -->
+</div><!-- End container -->
+<!-- End Content =============================================== -->
+
+<!-- End Footer =============================================== -->
+
+<div class="layer"></div><!-- Mobile menu overlay mask -->
+
+
+
+
+<!-- SPECIFIC SCRIPTS -->
+<script src="{{ url_for('static', filename='js/cat_nav_mobile.js') }}"></script>
+
+<script>
+    $('#cat_nav').mobileMenu();
+</script>
+<script src="{{ url_for('static', filename='js/ResizeSensor.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/theia-sticky-sidebar.min.js') }}"></script>
+<script>
+    jQuery('#sidebar').theiaStickySidebar({
+        additionalMarginTop: 80
+    });
+</script>
+<!-- SMOOTH SCROLL -->
+<script>
+    $('#cat_nav a[href^="#"]').click(function () {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') ||
+            location.hostname == this.hostname) {
+            var target = $(this.hash);
+            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            if (target.length) {
+                $('html,body').animate({
+                    scrollTop: target.offset().top - 75
+                }, 800);
+                return false;
+            }
+        }
+    });
+</script>
+
+{% endblock content %}

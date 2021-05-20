@@ -332,7 +332,7 @@ header.sticky{
 
 /* Footer  */
 footer{
-	background-color:#fff;
+	background-color:#61B7D4;
 	border-top: 1px solid #ededed;
 	padding:35px 0;
 }
@@ -341,7 +341,7 @@ footer h3{
 	font-weight:600;
 }
 footer a{
-	color:#555;
+	color:#ffff;
 }
 footer a:hover{
 	color:#ec008c;
@@ -358,13 +358,13 @@ footer .btn_1{
 }
 #social_footer{
 	text-align:center;
-	border-top:1px solid #ededed;
+	border-top:1px solid #ffff;
 	padding-top:30px;
 	margin-top:30px;
 }
 #social_footer p{
 	font-size:12px;
-	color:#8c8c8c;
+	color:#ffff;
 }
 #social_footer ul{
 	margin:0;
@@ -389,8 +389,8 @@ footer .btn_1{
 	border-radius: 50%;
 }
 #social_footer ul li a:hover{
-	background:#fff;
-	color:#111;
+	background:#111;
+	color:#ffff;
 }
 a#promote{
 	display:inline-block;
