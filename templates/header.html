@@ -26,8 +26,8 @@
                             <li><a href="{{ url_for('product.getAddProduct')}}">Start Selling</a></li>
 
                             <li><a href="{{url_for('product.getMarketPlace')}}">Marketplace</a></li>
-                            <li><a href="about.html">About us</a></li>
-                            <li><a href="faq.html">Faq</a></li>
+                            <li><a href="{{ url_for('static.about') }}">About us</a></li>
+                            <li><a href="{{ url_for('static.faq') }}">Faq</a></li>
 
 
                             {% if session['UserName'] %}

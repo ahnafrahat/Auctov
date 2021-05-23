@@ -9,17 +9,17 @@
                 </div>
                 <div class="col-md-4">
                     <ul>
-                        <li><a href="about.html">About us</a></li>
-                        <li><a href="faq.html">Faq</a></li>
+                        <li><a href="{{ url_for('static.about') }}">About us</a></li>
+                        <li><a href="{{ url_for('static.faq') }}">Faq</a></li>
                         <li><a href="contacts.html">Contacts</a></li>
 
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <ul>
-                        <li><a href="#0" data-toggle="modal" data-target="#login_2">Login</a></li>
-                        <li><a href="#0" data-toggle="modal" data-target="#register">Register</a></li>
-                        <li><a href="#0">Terms and conditions</a></li>
+                        <li><a href="{{ url_for('auth.getLogin') }}">Login</a></li>
+                        <li><a href="{{ url_for('auth.getSignup') }}">Register</a></li>
+                        <li><a href="">Terms and conditions</a></li>
                     </ul>
                 </div>
 

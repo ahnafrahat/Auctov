@@ -85,120 +85,33 @@
             </p>
         </div>
         <div class="row">
+            <!--End tools -->
+            {% if products %}
+
+
+            {% for item in products %}
+
             <div class="col-lg-6">
-                <a href="detail_page.html" class="strip_list">
+                <a href="{{ url_for('product.singleProduct' , product_id=item[0]  ) }}" class="strip_list">
                     <div class="ribbon_1">Popular</div>
                     <div class="desc">
                         <div class="thumb_strip">
-                            <img src="img/thumb_restaurant.jpg" alt="">
+                            <img src="/static/uploads/{{item[5]}}" alt="">
                         </div>
-                        <h3>Listing Title</h3>
+                        <h3>{{ item[1] }}</h3>
                         <div class="type">
-                            Category
+                            {{ item[4] }}
                         </div>
                         <div class="location">
-                            Description </div>
+                            {{ item[2] }} </div>
 
                     </div><!-- End desc-->
                 </a><!-- End strip_list-->
-                <a href="listing_details.html" class="strip_list">
-                    <div class="ribbon_1">Popular</div>
-                    <div class="desc">
-                        <div class="thumb_strip">
-                            <img src="img/thumb_restaurant_2.jpg" alt="">
-                        </div>
-                        <h3>Naples Pizza</h3>
-                        <div class="type">
-                            Italian / Pizza
-                        </div>
-                        <div class="location">
-                            135 Newtownards Road, Belfast, BT4. <span class="opening">Opens at 17:00</span>
-                        </div>
-                        <ul>
-                            <li>Take away<i class="icon_check_alt2 ok"></i></li>
-                            <li>Delivery<i class="icon_check_alt2 ok"></i></li>
-                        </ul>
-                    </div><!-- End desc-->
-                </a><!-- End strip_list-->
-                <a href="detail_page.html" class="strip_list">
-                    <div class="ribbon_1">Popular</div>
-                    <div class="desc">
-                        <div class="thumb_strip">
-                            <img src="img/thumb_restaurant_3.jpg" alt="">
-                        </div>
-                        <h3>Japan Food</h3>
-                        <div class="type">
-                            Sushi / Japanese
-                        </div>
-                        <div class="location">
-                            135 Newtownards Road, Belfast, BT4. <span class="opening">Opens at 17:00</span>
-                        </div>
-                        <ul>
-                            <li>Take away<i class="icon_check_alt2 ok"></i></li>
-                            <li>Delivery<i class="icon_check_alt2 ok"></i></li>
-                        </ul>
-                    </div><!-- End desc-->
-                </a><!-- End strip_list-->
             </div><!-- End col-md-6-->
-            <div class="col-lg-6">
-                <a href="detail_page.html" class="strip_list">
-                    <div class="ribbon_1">Popular</div>
-                    <div class="desc">
-                        <div class="thumb_strip">
-                            <img src="img/thumb_restaurant_4.jpg" alt="">
-                        </div>
-                        <h3>Sushi Gold</h3>
-                        <div class="type">
-                            Sushi / Japanese
-                        </div>
-                        <div class="location">
-                            135 Newtownards Road, Belfast, BT4. <span class="opening">Opens at 17:00</span>
-                        </div>
-                        <ul>
-                            <li>Take away<i class="icon_check_alt2 ok"></i></li>
-                            <li>Delivery<i class="icon_close_alt2 no"></i></li>
-                        </ul>
-                    </div><!-- End desc-->
-                </a><!-- End strip_list-->
-                <a href="detail_page.html" class="strip_list">
-                    <div class="ribbon_1">Popular</div>
-                    <div class="desc">
-                        <div class="thumb_strip">
-                            <img src="img/thumb_restaurant_5.jpg" alt="">
-                        </div>
-                        <h3>Dragon Tower</h3>
-                        <div class="type">
-                            Chinese / Thai
-                        </div>
-                        <div class="location">
-                            135 Newtownards Road, Belfast, BT4. <span class="opening">Opens at 17:00</span>
-                        </div>
-                        <ul>
-                            <li>Take away<i class="icon_check_alt2 ok"></i></li>
-                            <li>Delivery<i class="icon_check_alt2 ok"></i></li>
-                        </ul>
-                    </div><!-- End desc-->
-                </a><!-- End strip_list-->
-                <a href="detail_page.html" class="strip_list">
-                    <div class="ribbon_1">Popular</div>
-                    <div class="desc">
-                        <div class="thumb_strip">
-                            <img src="img/thumb_restaurant_6.jpg" alt="">
-                        </div>
-                        <h3>China Food</h3>
-                        <div class="type">
-                            Chinese / Vietnam
-                        </div>
-                        <div class="location">
-                            135 Newtownards Road, Belfast, BT4. <span class="opening">Opens at 17:00</span>
-                        </div>
-                        <ul>
-                            <li>Take away<i class="icon_check_alt2 ok"></i></li>
-                            <li>Delivery<i class="icon_check_alt2 ok"></i></li>
-                        </ul>
-                    </div><!-- End desc-->
-                </a><!-- End strip_list-->
-            </div>
+
+            {% endfor %}
+            {% endif %}
+
         </div><!-- End row -->
     </div><!-- End container -->
 </div><!-- End white_bg -->

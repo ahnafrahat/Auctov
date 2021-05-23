@@ -4,7 +4,7 @@ from decorators import is_loggedIn
 from uploadUtils import photos
 from datetime import datetime
 
-from db import add_product, get_all_products, get_user_products, get_single_product
+from db import add_product, get_all_products, get_user_products, get_single_product, place_bid, create_bid_table
 
 product = Blueprint("product", __name__,
                     static_folder="static", template_folder="templates")
@@ -40,9 +40,21 @@ def postAddProduct():
     return redirect(url_for('product.getAddProduct'))
 
 
+@product.route("/placebid", methods=["POST"])
+@is_loggedIn
+def placebid():
+    productId = 1
+
+    result = place_bid(
+        bid_price=10,
+        product_id=1,
+        user_id=session['user_id'])
+
+    return redirect(url_for('product.singleProduct', product_id=1))
+
+
 @product.route("/getMarketPlace", methods=["GET"])
 def getMarketPlace():
-
     products = get_all_products()
 
     return render_template("marketplace.html", products=products)

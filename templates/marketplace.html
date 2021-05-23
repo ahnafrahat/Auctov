@@ -116,8 +116,8 @@
 					<div class="col-md-9">
 						<div class="desc">
 							<div class="thumb_strip">
-								<a href="detail_page.html"><img style="height: 100%; width: 100%;"
-										src="/static/uploads/{{item[5]}}" alt=""></a>
+								<a href="{{ url_for('product.singleProduct' , product_id=item[0]  ) }}"><img
+										style="height: 100%; width: 100%;" src="/static/uploads/{{item[5]}}" alt=""></a>
 							</div>
 							<h3>{{item[1]}}</h3>
 							<div class="type">
@@ -131,7 +131,8 @@
 					<div class="col-md-3">
 						<div class="go_to">
 							<div>
-								<a href="{{ url_for('product.singleProduct' , product_id=1  ) }}" class="btn_1">View</a>
+								<a href="{{ url_for('product.singleProduct' , product_id=item[0]  ) }}"
+									class="btn_1">View</a>
 							</div>
 						</div>
 					</div>

@@ -47,6 +47,28 @@ def create_product_table():
         return False
 
 
+def create_bid_table():
+
+    cursor = mysql.connection.cursor()
+
+    query = '''CREATE TABLE bidTable (
+    bidId int NOT NULL AUTO_INCREMENT, 
+    bid_price int, 
+    user_id int, 
+    product_id int,    
+    PRIMARY KEY (bidId) 
+    );'''
+
+    try:
+        cursor.execute(query)
+        mysql.connection.commit()
+        cursor.close()
+        return True
+    except Exception as e:
+        print(e)
+        return False
+
+
 def check_table_exist():
 
     cursor = mysql.connection.cursor()
@@ -159,6 +181,22 @@ def add_product(title, description, reserve_price, bin_price, image, user_id):
         return False
 
 
+def place_bid(bid_price, product_id, user_id):
+    cursor = mysql.connection.cursor()
+
+    query = "INSERT INTO bid (bid_price, product_id, user_id) VALUES (%s, %s, %s)"
+    value = (int(bid_price), int(product_id),  int(user_id))
+    try:
+        cursor.execute(query, value)
+        mysql.connection.commit()
+        cursor.close()
+        return True
+    except Exception as e:
+        print(e)
+        cursor.close()
+        return False
+
+
 def get_all_products():
 
     cursor = mysql.connection.cursor()
@@ -202,6 +240,23 @@ def get_single_product(product_id):
         product = cursor.fetchone()
         cursor.close()
         return product
+    except Exception as e:
+        print(e)
+        cursor.close()
+        return False
+
+
+def get_popular_product():
+
+    cursor = mysql.connection.cursor()
+    query = "SELECT * FROM product WHERE product_id<=6 "
+
+    try:
+        cursor.execute(query)
+        products = cursor.fetchall()
+        cursor.close()
+
+        return products
     except Exception as e:
         print(e)
         cursor.close()

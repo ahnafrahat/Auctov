@@ -3,7 +3,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 
 
-from db import create_user_table, add_user, login_user, create_product_table
+from db import create_user_table, add_user, login_user, create_product_table, create_bid_table
+
 auth = Blueprint("auth", __name__, static_folder="static",
                  template_folder="templates")
 
@@ -11,9 +12,9 @@ auth = Blueprint("auth", __name__, static_folder="static",
 @auth.route("/getSignup", methods=["GET"])
 def getSignup():
 
-    create_user_table()
+    # create_user_table()
 
-    create_product_table()
+    # create_product_table()
 
     return render_template("register.html")
 
