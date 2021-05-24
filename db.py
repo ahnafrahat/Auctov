@@ -246,6 +246,22 @@ def get_single_product(product_id):
         return False
 
 
+def delete_product(product_id):
+
+    cursor = mysql.connection.cursor()
+    query = "DELETE FROM product WHERE product_id='%s' " % (int(product_id))
+
+    try:
+        cursor.execute(query)
+        product = cursor.fetchone()
+        cursor.close()
+        return product
+    except Exception as e:
+        print(e)
+        cursor.close()
+        return False
+
+
 def get_popular_product():
 
     cursor = mysql.connection.cursor()

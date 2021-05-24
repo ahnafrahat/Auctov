@@ -826,11 +826,11 @@ a.strip_list:hover h3{
 	color:#EC008C;
 }
 .desc .type{
-	font-size:12px;
-	font-style:italic;
-	color:#777;
-	margin-bottom:12px;
-	margin-top:5px;
+	    font-size: 1rem;
+	    color: #60b7d4;
+	    margin-bottom: 12px;
+	    margin-top: 5px;
+	    font-weight: 600;
 }
 .desc .opening{
 	color:#C33;

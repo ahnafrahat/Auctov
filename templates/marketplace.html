@@ -121,7 +121,7 @@
 							</div>
 							<h3>{{item[1]}}</h3>
 							<div class="type">
-								{{item[4]}}
+								${{item[4]}}
 							</div>
 							<div class="location">
 								{{item[2]}}
@@ -130,10 +130,22 @@
 					</div>
 					<div class="col-md-3">
 						<div class="go_to">
+							{% if session['UserName'] == 'admin' %}
+							<div>
+								<a href="{{ url_for('product.deleteProduct' , product_id=item[0]  ) }}"
+									class="btn_1">Delete</a>
+							</div>
 							<div>
 								<a href="{{ url_for('product.singleProduct' , product_id=item[0]  ) }}"
 									class="btn_1">View</a>
 							</div>
+							{% else %}
+							<div>
+								<a href="{{ url_for('product.singleProduct' , product_id=item[0]  ) }}"
+									class="btn_1">View</a>
+							</div>
+							{% endif %}
+
 						</div>
 					</div>
 				</div><!-- End row-->
